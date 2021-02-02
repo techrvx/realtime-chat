@@ -1,5 +1,5 @@
-# Real time chat
+# Realtime chat application
 
-A real time chat built with React.
+A realtime chat application built with React.
 
 Based on an interview code challenge.
