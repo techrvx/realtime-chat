@@ -1,9 +1,20 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const isEnvProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  mode: isEnvProduction ? "procuction" : "development",
+  entry: path.resolve(__dirname, "src", "index.js"),
+  output: {
+    path: path.resolve(__dirname, "dist/"),
+    filename: "bundle.js",
+  },
+  devtool: isEnvProduction ? "source-map" : "cheap-module-source-map",
+  optimization: {
+    minimize: isEnvProduction,
+  },
   module: {
     rules: [
       {
@@ -24,17 +35,18 @@ module.exports = {
     },
     extensions: ["*", ".js", ".jsx"],
   },
-  output: {
-    path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
-    filename: "bundle.js",
-  },
   devServer: {
-    contentBase: path.join(__dirname, "public/"),
+    contentBase: path.join(__dirname, "dist"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true,
     historyApiFallback: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, "public", "index.html"),
+    }),
+  ],
 };
