@@ -27,7 +27,7 @@ Development server should be ready at `http://localhost:3000/`.
 
 ### Production
 
-Production url: (pending).
+Public url: [https://realtime-chat.vercel.app](https://realtime-chat.vercel.app/).
 
 ### UI showcase
 
