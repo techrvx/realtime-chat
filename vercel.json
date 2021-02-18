@@ -1,6 +1,8 @@
 {
   "routes": [
+    { "src": "/login", "dest": "/" },
     { "src": "/chat", "dest": "/" },
-    { "src": "/ui", "dest": "/" }
+    { "src": "/ui", "dest": "/" },
+    { "src": "/", "dest": "/" }
   ]
 }
