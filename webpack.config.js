@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const isEnvProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
-  mode: isEnvProduction ? "procuction" : "development",
+  mode: isEnvProduction ? "production" : "development",
   entry: path.resolve(__dirname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "dist/"),
